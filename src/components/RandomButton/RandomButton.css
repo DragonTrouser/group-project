@@ -1,0 +1,13 @@
+.random-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #333;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.random-button:hover {
+  background-color: #eee;
+}
