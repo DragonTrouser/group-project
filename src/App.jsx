@@ -9,6 +9,8 @@ import Controls from './ui/Controls'
 import RodBoard from './components/RodBoard/RodBoard'
 import { colorMap } from './constants/colorMap'
 
+import './App.css'
+
 
 export default function App() {
     const [state, dispatch] = useReducer(gameReducer, initialGameState)
@@ -18,7 +20,9 @@ export default function App() {
     )
 
     const handleRodClick = (rodIndex) => {
-        if (!state.rods[rodIndex] || state.rods[rodIndex].length === 0) return
+        if (state.heldBolt === null) {
+            if (!state.rods[rodIndex] || state.rods[rodIndex].length === 0) return
+        }
 
         dispatch({
             type: state.heldBolt === null ? ActionType.PICK_BOLT : ActionType.PLACE_BOLT,
