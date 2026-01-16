@@ -1,25 +1,24 @@
 import './RodBoard.css'
-import Bolt from '../Bolt/Bolt'
 
-export default function RodBoard({ rods, mode, onRodClick }) {
-  return (
-    <div className="container">
-      {rods.map((rod, rodIndex) => (
-        <div
-          key={rodIndex}
-          className="rod"
-          onClick={() => onRodClick?.(rodIndex)}
-        >
-          <div className="rod-base"></div>
 
-          {rod.map((color, index) => (
-            <Bolt
-              key={index}
-              color={color}
-            />
-          ))}
+export default function RodBoard({ rods, onRodClick }) {
+    return (
+        <div className="rod-board">
+            {rods.map((rod, rodIndex) => (
+                <div
+                key={rodIndex}
+                className={`rod ${rod.length === 0 ? 'empty' : ''}`}
+                onClick={() => onRodClick(rodIndex)}
+                >
+                    {rod.map((color, boltIndex) => (
+                        <div
+                        key={boltIndex}
+                        className='bolt'
+                        style={{backgroundColor: color}}
+                        />
+                    ))}
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  )
+    )
 }
