@@ -1,4 +1,5 @@
 import { ActionType } from "./actions";
+import { nextStep } from "../logic/solver";
 import { pickBolt, placeBolt } from "../logic/rodLogic";
 import { initialGameState } from "./initialGameState";
 
