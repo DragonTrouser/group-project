@@ -21,12 +21,13 @@ export function gameReducer(state, action) {
             if (state.heldBolt !== null) return state
 
             const result = pickBolt(state.rods, action.rodIndex)
-            if (!result || result.bolt == null) return state
+            if (!result || result.bolt === null) return state
 
             return {
                 ...state,
                 rods: result.nextRods,
-                heldBolt: result.bolt
+                heldBolt: result.bolt,
+                history: [...state.history, state.rods.map(r => [...r])]
             }
 
         case ActionType.PLACE_BOLT:
@@ -38,8 +39,7 @@ export function gameReducer(state, action) {
                 ...state,
                 rods: nextRods,
                 heldBolt: null,
-                iteration: state.iteration + 1,
-                history: [...state.history, state.rods]
+                iteration: state.iteration + 1
             }
 
         case ActionType.NEXT_STEP:
@@ -51,7 +51,7 @@ export function gameReducer(state, action) {
                 ...state,
                 rods: newRods,
                 iteration: state.iteration + 1,
-                history: [...state.history, state.rods]
+                history: [...state.history, state.rods.map(r => [...r])]
             }
 
         case ActionType.UNDO:
@@ -60,6 +60,7 @@ export function gameReducer(state, action) {
             return {
                 ...state,
                 rods: state.history.at(-1),
+                heldBolt: null,
                 iteration: Math.max(0, state.iteration - 1),
                 history: state.history.slice(0, -1)
             }

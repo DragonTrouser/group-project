@@ -1,6 +1,6 @@
 export const initialGameState = {
     rods: [],
-    heldBold: null,
+    heldBolt: null,
     iteration: 0,
     history: []
 }
