@@ -49,7 +49,7 @@ async function getBoardFileList() {
         'Inst_1_7-16_5_80_1.txt',
         'Inst_2_7-10_5-50_1.txt', 
         'Inst_3_5-7_4-24_1.txt',
-        'Inst_4_5-4_5-15_1.txt'
+        //'Inst_4_5-4_5-15_1.txt'
     ];
 }
 
