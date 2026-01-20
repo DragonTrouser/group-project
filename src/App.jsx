@@ -42,7 +42,7 @@ export default function App() {
                     const rods = generateRandomBoard(rodCount)
                     dispatch({ type: ActionType.GENERATE, rods })
                 }}
-onImport={async () => {
+                onImport={async () => {
                     try {
                         const rods = await importBoard()
                         if (rods) {
