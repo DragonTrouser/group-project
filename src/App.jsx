@@ -42,9 +42,16 @@ export default function App() {
                     const rods = generateRandomBoard(rodCount)
                     dispatch({ type: ActionType.GENERATE, rods })
                 }}
-                onImport={() => {
-                    const rods = importBoard()
-                    dispatch({ type: ActionType.IMPORT, rods })
+onImport={async () => {
+                    try {
+                        const rods = await importBoard()
+                        if (rods) {
+                            dispatch({ type: ActionType.IMPORT, rods })
+                        }
+                    } catch (error) {
+                        console.error('Import failed:', error)
+                        alert('Failed to import board: ' + error.message)
+                    }
                 }}
                 onNextStep={() => {
                     dispatch({ type: ActionType.NEXT_STEP })
